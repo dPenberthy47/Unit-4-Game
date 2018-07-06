@@ -1,0 +1,30 @@
+.container {
+    margin-top: 100px;
+}
+
+/* navbar */
+#header-bar {
+    background: grey;
+    border-top: red 2px solid;
+    border-bottom: blue 2px solid;
+    color: white;
+}
+
+/* characters */
+.card {
+    width: 50px;
+    height: 100px;
+}
+
+/* choose your character */
+.banner {
+    padding-left: 10px;
+}
+
+/* Attack Button */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+

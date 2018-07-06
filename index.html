@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>
+            David Penberthy's jQuery Pokemon Battle Royal
+        </title>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+        <link href="assets/css/reset.css">
+        <link href="assets/css/style.css">
+
+        <style>
+            body {
+                background: url("assets/images/pokemon-battle-background-8.png");
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+            <div id="header-bar" class="row navbar navbar-light" style="color: white; background-color: grey; border-top: solid yellow 2px; border-bottom: solid blue 2px">
+                <div class="col-sm-6">
+                    <h1 class="banner" style="margin-left: 10px;">Pokemon RPG!</h1>
+                </div>
+                <div class="col-sm-6">
+                    <!--leave this div empty-->
+                </div>
+            </div>
+            <div>
+                <br>
+            </div>
+        <div class="container">
+
+            <div class="row">
+
+                <h3 class="banner">Choose a character</h3>
+
+            </div>
+
+            <div class="row">
+            <!--Pikachu-->
+                <div class="col-sm-2"> <!--where the pokemon will start out-->
+                    <div id="pikachu" class="card">
+                        <img class="card-img-top" src="assets/images/pika.jpg" style="height: 75px; width: 75px; position: relative; left: 40px;"/>
+                        <div class="card-body" style="font-size: 0.75em; line-height: 0.9em; height: 110px;">
+                            <strong><p>Pikachu - 130 <span id="P-HP">HP</span></p></strong>
+                            <p>Thunderbolt</p>
+                            <p>Iron Tail</p>
+                        </div>
+                    </div>
+                </div>
+            <!--Charizard-->
+                <div class="col-sm-2">
+                    <div id="charizard" class="card">
+                        <img class="card-img-top" src="assets/images/charizard.jpg" style="height: 75px; width: 75px; position: relative; left: 40px;"/>
+                        <div class="card-body" style="font-size: 0.75em; line-height: 0.9em; height: 110px;">
+                            <strong><p>Charizard - <span id="C-HP">190 HP</span></p></strong>
+                            <p>Flamethrower</p>
+                            <p>Wing Attack</p>
+                        </div>
+                    </div>
+                </div>
+            <!--Mewtwo-->
+                <div class="col-sm-2">
+                    <div id="mewtwo" class="card">
+                        <img class="card-img-top" src="assets/images/mewtwo.jpg"  style="height: 75px; width: 75px; position: relative; left: 40px;"/>
+                        <div class="card-body" style="font-size: 0.75em; line-height: 0.9em; height: 110px;">
+                            <strong><p>Mewtwo - <span id="M-HP">220 HP</span></p></strong>
+                            <p>Psychic</p>
+                            <p>Shadow Ball</p>
+                        </div>
+                    </div>
+                </div>
+            <!--Lucario-->
+                <div class="col-sm-2">
+                    <div id="lucario" class="card">
+                        <img class="card-img-top" data- src="assets/images/lucario.jpg"  style="height: 75px; width: 75px; position: relative; left: 40px;"/>
+                        <div class="card-body" style="font-size: 0.75em; line-height: 0.9em; height: 110px;">
+                            <strong><p>Lucario - <span id="L-HP">150 HP</span></p></strong>
+                            <p>Aura Sphere</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="defender-area" class="col-sm-2">
+                    <!--defender will go here-->
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div id="attacking-area" class="col-sm-2">
+                    <!--Your attacker will go here-->
+                </div>
+                <div class="col-sm-8">
+                        <div id="attacking-options-area" class="col-sm-2">
+                            <button class="atkBtn">Attack</button>
+                        </div>
+                </div>
+            <!--Attacking options will appear here once the Pokemon is choosen-->
+                
+            </div>
+
+        </div>
+
+        <script src="assets/javascript/game.js"></script>
+
+    </body>
+</html>
