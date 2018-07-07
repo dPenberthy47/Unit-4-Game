@@ -27,4 +27,6 @@
     position: relative;
     display: inline-block;
 }
-
+.card-body {
+    text-align: center;
+}

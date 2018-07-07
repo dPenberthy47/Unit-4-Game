@@ -2,168 +2,34 @@ $(document).ready(function(){
 
     var hasAttackCard = $("#attacking-area").children().length;
     var hasDefendCard = $("#defender-area").children().length;
-    var atkBtn = $(".atkBtn")
-    var atkBtnOne;
-    var atkBtnTwo;
+    var atkBtn = $(".atkBtn");
+    var atkOpt = $(".atkBtnOpt");
+     // Pokemon HP 
+     var hpBtn = $(".hpBtn");
+     var compHpBtn = $(".compHpBtn");
 
     atkBtn.hide();
+    atkOpt.hide();
+    hpBtn.hide();
+    compHpBtn.hide();
 
-// DOM elements
+    // attack variables
+    var userDamage = 25;
+    var countTurns = 1;
+    var userAttack = Math.floor(Math.random() * userDamage * countTurns);
+    var compAttack = Math.floor(Math.random() * 75);
 
-    // Pokemon HP 
-    var pikaHealth = document.getElementById("P-HP");
-    var charHealth = document.getElementById("C-HP");
-    var mewHealth = document.getElementById("M-HP");
-    var lucHealth = document.getElementById("L-HP");
+    // user hp variables
+    var hpLeft = $("#userHP");
+    var currentHP = 200;
+    hpLeft.text(currentHP);
 
-/*
-// attack variables COME BACK TO THESE BECAUSE I DONT KNOW WHAT THESE DO YET
-attackName = '';
-curAttack = {};
-randInt = 0;
-enemyAttack = {};
-defendProgressInt = null;
-defendProgressComplete = 0;
-progressInt = null;
-progressComplete = 0;
+    // comp hp variables
+    var compHpLeft = $("#compHP");
+    var compCurrentHP = 200;
+    compHpLeft.text(compCurrentHP);
 
-
-// put each character into an object with characteristics
-characters = [
-    {
-        //pikachu
-        name: "pikachu",
-        hp: {
-            current: 200,
-            total: 200
-        },
-        attacks: [
-            {
-                name: "thunderbolt",
-                hp: randomNum(60),
-                avail: {
-                    total: 10,
-                    remaining: 10
-                }
-            },
-            {
-                name: "iron tail",
-                hp: randomNum(60),
-                avail: {
-                    total: 10,
-                    remaining: 10
-                }
-            }
-        ]
-    },
-    {
-        //charizard
-        name: "Charizard",
-        hp: {
-            current: 200,
-            total: 200
-        },
-        attacks: [
-            {
-                name: "flamethrower",
-                hp: randomNum(80),
-                avail: {
-                    total: 5,
-                    remaining: 5
-                }
-            },
-            {
-                name: "wing attack",
-                hp: randomNum(40),
-                avail: {
-                    total: 15,
-                    remaining: 15
-                }
-            }
-        ]
-    },
-    {
-        //Mewtwo
-        name: "Mewtwo",
-        hp: {
-            current: 200,
-            total: 200
-        },
-        attacks: [
-            {
-                name: "psychic",
-                hp: randomNum(90),
-                avail: {
-                    total: 5,
-                    remaining: 5
-                }
-            },
-            {
-                name: "shadow ball",
-                hp: randomNum(40),
-                avail: {
-                    total: 15,
-                    remaining: 15
-                }
-            }
-        ]
-    },
-    {
-        //lucario
-        name: "Lucario",
-        hp: {
-            current: 200,
-            total: 200
-        },
-        attacks: [
-            {
-                name: "psychic",
-                hp: randomNum(90),
-                avail: {
-                    total: 5,
-                    remaining: 5
-                }
-            },
-            {
-                name: "shadow ball",
-                hp: randomNum(40),
-                avail: {
-                    total: 15,
-                    remaining: 15
-                }
-            }
-        ]
-    }
-] 
-
-function randomNum(max) {
-    // generate a random number based on the moves value
-    return Math.floor(Math.random() * (max)
-  } */
-  
-    // name
-
-    // HP
-
-    //moves
-
-    //build functionality for two moves per pokemon
-
-        //two moves with unique abilities
-
-        //chance of missing
-
-        //HP
-
-            //PUT A CONDITIONAL HERE WITH $("#-HP").html() to change HP when attacked
-
-        //HP goes down when hit
-
-        //pokemon faints when it runs out of HP
-
-// ability to select a pokemon
-  
-
+    //start the game by selecting two pokemon
     $( init );
 
     function init () {
@@ -181,8 +47,11 @@ function randomNum(max) {
                     
                 $(this).appendTo("#defender-area");  /* if there is no card, when we click on a card, 
                                                         we want to pend it to the defender area */
-
-                $(".atkBtn").show(); /* once both pokemon are selected, the attack button shows, 
+                atkOpt.hide();
+                hpBtn.hide();
+                compHpBtn.hide();
+                $(".atkBtn").show();
+                 /* once both pokemon are selected, the attack button shows, 
                                         allowing me to play the game */
                 console.log($(this).parent().get( 0 ));
             }
@@ -190,41 +59,74 @@ function randomNum(max) {
     }
 
     // add functionality to my attack button
-    $( attack);
+    $( attackBtn);
 
     // make an .on("click", function {})
-    function attack() {
+    function attackBtn() {
         $(".atkBtn").on("click", function() {
-            atkBtnOne = "<button>Attack 1</button>";
-            atkBtnTwo = "<button>Attack 2</button 2>";
-            atkBtnOne.appendTo("attacking-options-area");
-            atkBtnTwo.appendTo("attacking-options-area");
+            atkOpt.show();
+            hpBtn.show();
+            atkBtn.hide();
+            compHpBtn.show();
+
+            $(".pokeSelector").hide();
+
         });
     }
+
+    $( attack );
+
+    function attack() {
+        countTurns++;
+         $(".atkBtnOpt").on("click", function() {
+
+            //reiterate attack vars in the local function scope
+            userDamage = 75;
+            countTurns = 1;
+            userAttack = (Math.floor(Math.random() * userDamage * countTurns));
+            
+            //reiterate comp attack var
+            compAttack = (Math.floor(Math.random() * 75));
+            
+            //update user hp
+            currentHP = currentHP - compAttack;
+            console.log(currentHP);
+            hpLeft.text(currentHP);
+
+            //update comp hp
+            compCurrentHP = compCurrentHP - userAttack;
+            console.log(compCurrentHP);
+            compHpLeft.text(compCurrentHP);
+
+            // need to put conditionals on these
+            alert("Your attack took away " + userAttack + " HP from your opponent! you have " + currentHP + " HP left!");
+            alert("Your opponent struck back, taking " + compAttack + " HP from your pokemon! Your opponent has " + compCurrentHP + " HP left!");
+
+            if (currentHP <= 0) {
+
+                alert("Oh no! Your pokemon has fainted, better take it to the PokeCenter!");
+
+                var pokecenter = confirm("would you like to heal your pokemon and try again?");
+                
+                if (pokecenter) {
+                    alert("Your pokemon has restored 100 HP points!");
+                    currentHP = currentHP + 100;
+                } else {
+                    document.reload();
+                }
+
+            } else if (compCurrentHP <= 0) {
+
+                alert("The enemey pokemon fainted! YOU WIN!");
+                var replay = confirm("would you like to play again?");
+                
+                if (replay) {
+                     document.reload();
+                 }
+            }
+            
+         });
+         
+    }
     
-    // put functions for the pokemons moves in here
-
-//computer randomly selects an opponent pokemon
-
-    //moves the enemy character into the defender
-
-    //computer randomly selects a move
-
-    // you must select your next opponent after you've defeated your opponent
-
-//press the keys via the buttons to use an attack
-
-    //the attack buttons will appear when you choose a pokemon
-
-    //if no defender pokemon is choosen, a document.write with "no enemy selected" will appear.
-
-
-//when your HP is reduced to 0, the game is over. 
-
-//you win once you've knocked out every opponent
-
-//when 
-
-//press restart to restart the game
-
 });
