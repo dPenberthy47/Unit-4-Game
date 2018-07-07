@@ -1,13 +1,16 @@
 $(document).ready(function(){
 
+    //DOM buttons and cards
     var hasAttackCard = $("#attacking-area").children().length;
     var hasDefendCard = $("#defender-area").children().length;
     var atkBtn = $(".atkBtn");
     var atkOpt = $(".atkBtnOpt");
-     // Pokemon HP 
-     var hpBtn = $(".hpBtn");
-     var compHpBtn = $(".compHpBtn");
 
+    // Pokemon HP buttons
+    var hpBtn = $(".hpBtn");
+    var compHpBtn = $(".compHpBtn");
+
+    // hide battle buttons initially
     atkBtn.hide();
     atkOpt.hide();
     hpBtn.hide();
@@ -113,9 +116,11 @@ $(document).ready(function(){
                 
                 if (pokecenter) {
                     alert("Your pokemon has restored 100 HP points!");
+                    currentHP = 0;
                     currentHP = currentHP + 100;
+                    hpLeft.text(currentHP);
                 } else {
-                    document.reload();
+                    document.reload(forceget);
                 }
 
             } else if (compCurrentHP <= 0) {
@@ -124,7 +129,10 @@ $(document).ready(function(){
                 var replay = confirm("would you like to play again?");
                 
                 if (replay) {
-                     document.reload();
+                     currentHP = 200;
+                     commpCurrentHP = 200;
+                     hpLeft.text(currentHP);
+                     compHpLeft.text(compCurrentHP);
                  }
             }
             
