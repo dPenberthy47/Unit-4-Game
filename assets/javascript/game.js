@@ -130,7 +130,7 @@ $(document).ready(function(){
                 
                 if (replay) {
                      currentHP = 200;
-                     commpCurrentHP = 200;
+                     compCurrentHP = 200;
                      hpLeft.text(currentHP);
                      compHpLeft.text(compCurrentHP);
                  }
