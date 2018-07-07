@@ -58,22 +58,24 @@ $(document).ready(function(){
         });
     }
 
-    // add functionality to my attack button
+    // click on the start button to begin the game
     $( attackBtn);
 
-    // make an .on("click", function {})
     function attackBtn() {
         $(".atkBtn").on("click", function() {
+            // show battle buttons, hide start button
             atkOpt.show();
             hpBtn.show();
             atkBtn.hide();
             compHpBtn.show();
 
+            // hide unselected pokemon
             $(".pokeSelector").hide();
 
         });
     }
 
+    // when you attack your opponent, this function runs
     $( attack );
 
     function attack() {
@@ -102,6 +104,7 @@ $(document).ready(function(){
             alert("Your attack took away " + userAttack + " HP from your opponent! your opponent has " + compCurrentHP + " HP left!");
             alert("Your opponent struck back, taking " + compAttack + " HP from your pokemon! Your opponent has " + currentHP + " HP left!");
 
+            // check if either pokemon has run out of HP.
             if (currentHP <= 0) {
 
                 alert("Oh no! Your pokemon has fainted, better take it to the PokeCenter!");
