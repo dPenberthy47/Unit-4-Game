@@ -99,8 +99,8 @@ $(document).ready(function(){
             compHpLeft.text(compCurrentHP);
 
             // need to put conditionals on these
-            alert("Your attack took away " + userAttack + " HP from your opponent! you have " + currentHP + " HP left!");
-            alert("Your opponent struck back, taking " + compAttack + " HP from your pokemon! Your opponent has " + compCurrentHP + " HP left!");
+            alert("Your attack took away " + userAttack + " HP from your opponent! your opponent has " + compCurrentHP + " HP left!");
+            alert("Your opponent struck back, taking " + compAttack + " HP from your pokemon! Your opponent has " + currentHP + " HP left!");
 
             if (currentHP <= 0) {
 
